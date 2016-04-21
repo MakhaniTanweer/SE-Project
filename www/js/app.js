@@ -23,6 +23,7 @@ var exampleApp=angular.module('starter', ['ionic'])
     }
   });
 });
+
 exampleApp.controller('MapController', function($scope, $ionicLoading) {
  
     google.maps.event.addDomListener(window, 'load', function() {
@@ -44,11 +45,26 @@ exampleApp.controller('MapController', function($scope, $ionicLoading) {
                 title: "My Location"
             });
         });
- 
-        $scope.map = map;
-        alert("Current Location");
+      
     });
+
  
+});
+
+exampleApp.controller('CarControl',function($scope, $ionicPopup) {
+
+  $scope.showPrompt = function() {
+  
+      var promptPopup = $ionicPopup.prompt({
+         templateUrl: 'templates/CarPopup.html'
+
+      });
+        
+      promptPopup.then(function(res) {
+         console.log(res);
+      });
+    
+   };
 });
 
 
